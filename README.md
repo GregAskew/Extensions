@@ -1,2 +1,2 @@
 # Extensions
-Collection of use C# extensions, organized into a project
+Collection of useful C# extensions, organized into a project

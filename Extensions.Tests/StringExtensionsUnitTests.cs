@@ -59,24 +59,6 @@
         }
 
         [TestMethod]
-        public void Test_IsValidEID() {
-            var eid = "jsmit001";
-            Assert.IsTrue(eid.IsValidEID());
-
-            eid = "j001";
-            Assert.IsTrue(eid.IsValidEID());
-
-            eid = string.Empty;
-            Assert.IsFalse(eid.IsValidEID());
-
-            eid = "jsmith";
-            Assert.IsFalse(eid.IsValidEID());
-
-            eid = "777";
-            Assert.IsFalse(eid.IsValidEID());
-        }
-
-        [TestMethod]
         public void Test_IsValidEmail() {
             var email = "joe@contoso.com";
             Assert.IsTrue(email.IsValidEmail());
@@ -202,7 +184,7 @@
             //Char value decimal: 73836 hex: 1206C
             //Char value decimal: 73837 hex: 1206D
             //Char value decimal: 73838 hex: 1206E
-            //Char value decimal: 73839 hex: 1206F 
+            //Char value decimal: 73839 hex: 1206F
             #endregion
 
             var formatCharacter = (char)int.Parse("202A", NumberStyles.AllowHexSpecifier);
@@ -289,7 +271,7 @@
             Assert.IsNotNull(testString);
             Assert.AreEqual(testString, "ABC123");
         }
-        
+
         [TestMethod]
         public void Test_SingleLabelName() {
             var testString = "server1.contoso.com";

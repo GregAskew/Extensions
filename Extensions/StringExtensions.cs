@@ -23,7 +23,6 @@
     public static class StringExtensions {
 
         #region Members
-        private static readonly string EidRegexFilter = @"^[a-z]{1}\w{0,4}\d{3}$";
         private static readonly string EmailAddressInvalidCharacterPattern = "^(?!\\.)(\"([^\"\\r\\\\]|\\\\[\"\\r\\\\])*\"|([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\\.)\\.)*)(?<!\\.)@[a-z0-9][\\w\\.-]*[a-z0-9]\\.[a-z][a-z\\.]*[a-z]$";
         #endregion
 
@@ -107,17 +106,6 @@
         }
 
         /// <summary>
-        /// Determines if the supplied string is a valid EID
-        /// </summary>
-        /// <param name="text">The EID</param>
-        /// <returns>True if valid</returns>
-        [DebuggerStepThroughAttribute]
-        public static bool IsValidEID(this string text) {
-            if (string.IsNullOrWhiteSpace(text)) return false;
-            return Regex.IsMatch(text, EidRegexFilter, RegexOptions.IgnoreCase);
-        }
-
-        /// <summary>
         /// Determines if the supplied string is a valid email address
         /// </summary>
         /// <param name="text">The email address</param>
@@ -174,10 +162,10 @@
         /// <param name="text">The string</param>
         /// <returns>The modified string</returns>
         /// <remarks>
-        /// Control characters are formatting and other non-printing characters, such as ACK, BEL, CR, FF, LF, and VT. 
-        /// The Unicode standard assigns code points from \U0000 to \U001F, \U007F, and from \U0080 to \U009F to control characters. 
-        /// According to the Unicode standard, these values are to be interpreted as control characters unless their use is otherwise 
-        /// defined by an application. Valid control characters are members of the UnicodeCategory.Control category. 
+        /// Control characters are formatting and other non-printing characters, such as ACK, BEL, CR, FF, LF, and VT.
+        /// The Unicode standard assigns code points from \U0000 to \U001F, \U007F, and from \U0080 to \U009F to control characters.
+        /// According to the Unicode standard, these values are to be interpreted as control characters unless their use is otherwise
+        /// defined by an application. Valid control characters are members of the UnicodeCategory.Control category.
         /// </remarks>
         [DebuggerStepThroughAttribute]
         public static string RemoveControlCharacters(this string text, char replacementCharacter = ' ') {
@@ -201,36 +189,36 @@
         /// <param name="text">The string</param>
         /// <returns>The modified string</returns>
         /// <remarks>
-        /// A member of the UnicodeCategory enumeration is returned by the Char.GetUnicodeCategory and CharUnicodeInfo.GetUnicodeCategory methods. 
-        /// The UnicodeCategory enumeration is also used to support Char methods, such as IsUpper(Char). Such methods determine whether a specified 
-        /// character is a member of a particular Unicode general category. A Unicode general category defines the broad classification of a character, 
+        /// A member of the UnicodeCategory enumeration is returned by the Char.GetUnicodeCategory and CharUnicodeInfo.GetUnicodeCategory methods.
+        /// The UnicodeCategory enumeration is also used to support Char methods, such as IsUpper(Char). Such methods determine whether a specified
+        /// character is a member of a particular Unicode general category. A Unicode general category defines the broad classification of a character,
         /// that is, designation as a type of letter, decimal digit, separator, mathematical symbol, punctuation, and so on.
         /// This enumeration is based on The Unicode Standard, version 5.0. For more information, see the "UCD File Format" and "General Category Values"
         /// subtopics at the Unicode Character Database.
         /// The Unicode Standard defines the following:
-        /// 
-        /// A surrogate pair is a coded character representation for a single abstract character that consists of a sequence of two code units, 
-        /// where the first unit of the pair is a high surrogate and the second is a low surrogate. A high surrogate is a Unicode code point in 
+        ///
+        /// A surrogate pair is a coded character representation for a single abstract character that consists of a sequence of two code units,
+        /// where the first unit of the pair is a high surrogate and the second is a low surrogate. A high surrogate is a Unicode code point in
         /// the range U+D800 through U+DBFF and a low surrogate is a Unicode code point in the range U+DC00 through U+DFFF.
-        /// 
-        /// A combining character sequence is a combination of a base character and one or more combining characters. A surrogate pair represents a 
-        /// base character or a combining character. A combining character is either spacing or nonspacing. A spacing combining character takes up a 
+        ///
+        /// A combining character sequence is a combination of a base character and one or more combining characters. A surrogate pair represents a
+        /// base character or a combining character. A combining character is either spacing or nonspacing. A spacing combining character takes up a
         /// spacing position by itself when rendered, while a nonspacing combining character does not. Diacritics are an example of nonspacing combining
         /// characters.
-        /// 
+        ///
         /// A modifier letter is a free-standing spacing character that, like a combining character, indicates modifications of a preceding letter.
-        /// 
+        ///
         /// An enclosing mark is a nonspacing combining character that surrounds all previous characters up to and including a base character.
-        /// 
+        ///
         /// A format character is a character that is not normally rendered but that affects the layout of text or the operation of text processes.
-        /// 
-        /// The Unicode Standard defines several variations to some punctuation marks. For example, a hyphen can be one of several code values that 
-        /// represent a hyphen, such as U+002D (hyphen-minus) or U+00AD (soft hyphen) or U+2010 (hyphen) or U+2011 (nonbreaking hyphen). 
+        ///
+        /// The Unicode Standard defines several variations to some punctuation marks. For example, a hyphen can be one of several code values that
+        /// represent a hyphen, such as U+002D (hyphen-minus) or U+00AD (soft hyphen) or U+2010 (hyphen) or U+2011 (nonbreaking hyphen).
         /// The same is true for dashes, space characters, and quotation marks.
-        /// 
+        ///
         /// The Unicode Standard also assigns codes to representations of decimal digits that are specific to a given script or language, for example,
         /// U+0030 (digit zero) and U+0660 (Arabic-Indic digit zero).
-        /// 
+        ///
         /// http://www.fileformat.info/info/unicode/category/Cf/list.htm
         /// </remarks>
         [DebuggerStepThroughAttribute]
